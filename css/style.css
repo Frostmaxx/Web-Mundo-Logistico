@@ -275,13 +275,14 @@ nav {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    /* Forzamos 4 columnas de igual tamaño, en lugar del auto-fit */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* Reducimos el espacio entre cajas para que calcen mejor */
 }
 
 .service-card {
     background: var(--gris-fondo);
-    padding: 30px;
+    padding: 20px 15px; /* Reducido el padding para achicar la caja */
     border-radius: 8px;
     text-align: center;
     transition: transform 0.3s;
@@ -295,17 +296,31 @@ nav {
 }
 
 .icon-placeholder {
-    font-size: 40px;
-    margin-bottom: 15px;
+    font-size: 30px; /* Reducimos el tamaño del icono un poco */
+    margin-bottom: 10px;
 }
 
 .service-card h3 {
     color: var(--azul-corporativo);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: 18px; /* Texto del título ajustado */
 }
 
 .service-card p {
     color: var(--texto-claro);
+    font-size: 14px; /* Texto interior más pequeño */
+}
+
+/* Permitimos que colapsen apilados solo en pantallas muy pequeñas (móviles) */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 por fila en tablet */
+    }
+}
+@media (max-width: 576px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Una por fila en móvil */
+    }
 }
 
 /* Sección Nosotros */
