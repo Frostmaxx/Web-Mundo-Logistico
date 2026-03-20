@@ -1,7 +1,8 @@
 /* Variables de Color basadas en tu Branding */
 :root {
-    --azul-corporativo: #0B3A6F; /* Azul profundo del logo */
-    --naranja-acento: #ED8B00;  /* Naranja de los detalles */
+    --azul-corporativo: #0B3A6F;
+    --naranja-acento: #ED8B00;
+    --naranja-acento-hover: #d47900;
     --blanco: #ffffff;
     --gris-fondo: #f5f7fa;
     --texto-oscuro: #333333;
@@ -13,7 +14,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -67,8 +68,8 @@ a {
 
 /* Navegación */
 .navbar {
-    background-color: var(--azul-corporativo);
-    color: var(--blanco);
+    background-color: var(--gris-fondo);
+    color: var(--azul-corporativo);
     padding: 15px 0;
     position: sticky;
     top: 0;
@@ -80,30 +81,23 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px; /* Asegura espacio si se reduce la pantalla */
+    gap: 30px;
 }
 
-.logo {
+.logo-container {
     flex-shrink: 0;
 }
 
-.logo h1 {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--blanco);
-    white-space: nowrap;
-}
-
-.logo-accent {
-    color: var(--naranja-acento);
-    font-weight: 400;
+.logo-container img {
+    height: 50px;
+    width: auto;
 }
 
 nav {
-    flex-grow: 1; /* Permite que el nav ocupe el espacio disponible central */
+    flex-grow: 1;
     display: flex;
-    justify-content: flex-end; /* Alinea los enlaces hacia la derecha antes del botón */
-    margin-right: 20px; /* Separación entre enlaces y botón */
+    justify-content: flex-end;
+    margin-right: 20px;
 }
 
 .nav-links {
@@ -113,10 +107,11 @@ nav {
 }
 
 .nav-links a {
-    color: var(--blanco);
+    color: var(--azul-corporativo);
     font-weight: 600;
-    font-size: 15px; /* Ligeramente más pequeños para mejor ajuste */
+    font-size: 15px;
     letter-spacing: 0.5px;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -125,6 +120,18 @@ nav {
 
 .navbar .btn {
     flex-shrink: 0;
+    background: var(--naranja-acento);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.navbar .btn:hover {
+    background: var(--naranja-acento-hover);
+    transform: translateY(-2px);
 }
 
 /* Sección Hero Carrusel */
@@ -147,11 +154,11 @@ nav {
 .carousel-track {
     display: flex;
     height: 100%;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 400%;
 }
 
 .carousel-slide {
-    min-width: 100%;
+    min-width: 25%;
     height: 100%;
     position: relative;
 }
@@ -277,38 +284,80 @@ nav {
     display: grid;
     /* Forzamos 4 columnas de igual tamaño, en lugar del auto-fit */
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px; /* Reducimos el espacio entre cajas para que calcen mejor */
+    gap: 20px;
 }
 
 .service-card {
     background: var(--gris-fondo);
-    padding: 20px 15px; /* Reducido el padding para achicar la caja */
-    border-radius: 8px;
+    padding: 30px 20px;
+    border-radius: 20px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: all 0.4s ease;
     border-bottom: 4px solid transparent;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.service-card:hover::before {
+    opacity: 0.15;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
     border-bottom: 4px solid var(--naranja-acento);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.icon-placeholder {
-    font-size: 30px; /* Reducimos el tamaño del icono un poco */
-    margin-bottom: 10px;
+.service-card h3,
+.service-card p {
+    position: relative;
+    z-index: 1;
 }
 
 .service-card h3 {
     color: var(--azul-corporativo);
     margin-bottom: 10px;
-    font-size: 18px; /* Texto del título ajustado */
+    font-size: 18px;
 }
 
 .service-card p {
     color: var(--texto-claro);
-    font-size: 14px; /* Texto interior más pequeño */
+    font-size: 14px;
+}
+
+.service-transport::before {
+    background-image: url('../resources/Mockup-camion-1-copia.png');
+}
+
+.service-almacen::before {
+    background-image: url('../resources/depositphotos-35148913-stock-photo-warehouse-interior.jpg');
+}
+
+.service-transportista::before {
+    background-image: url('../resources/vecteezy-fleet-of-trucks-parked-at-industrial-site-at-sunset-glow-55204636.jpeg');
+}
+
+.service-frio::before {
+    background-image: url('../resources/frozen-storage.jpeg');
 }
 
 /* Permitimos que colapsen apilados solo en pantallas muy pequeñas (móviles) */
@@ -323,10 +372,184 @@ nav {
     }
 }
 
-/* Sección Nosotros */
-.about {
-    padding: 80px 0;
+/* Página Nosotros */
+.about-page {
+    padding: 120px 0 80px;
     background-color: var(--gris-fondo);
+    min-height: calc(100vh - 200px);
+}
+
+/* Página de Servicios */
+.services-page {
+    padding: 120px 0 80px;
+    background-color: var(--gris-fondo);
+    min-height: calc(100vh - 200px);
+}
+
+.services-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+.services-intro p {
+    color: var(--texto-claro);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.service-detail-section {
+    background: var(--blanco);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.service-detail-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.service-detail-header h3 {
+    color: var(--azul-corporativo);
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.service-detail-divider {
+    height: 4px;
+    width: 60px;
+    background-color: var(--naranja-acento);
+    margin: 0 auto;
+}
+
+.service-detail-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.service-detail-content p {
+    color: var(--texto-claro);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.fleet-card {
+    background: var(--gris-fondo);
+    padding: 0;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-bottom: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.fleet-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+}
+
+.fleet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.fleet-card:hover .fleet-image img {
+    transform: scale(1.05);
+}
+
+.fleet-card h4,
+.fleet-card .fleet-capacity,
+.fleet-card p:not(.fleet-capacity) {
+    padding: 0 15px;
+}
+
+.fleet-card h4 {
+    padding-top: 15px;
+}
+
+.fleet-card .fleet-capacity {
+    padding-bottom: 10px;
+}
+
+.fleet-card p:not(.fleet-capacity) {
+    padding-bottom: 20px;
+}
+
+.fleet-card:hover {
+    transform: translateY(-5px);
+    border-bottom: 4px solid var(--naranja-acento);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.fleet-card h4,
+.fleet-card p {
+    position: relative;
+}
+
+.fleet-card h4 {
+    color: var(--azul-corporativo);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.fleet-capacity {
+    color: var(--naranja-acento);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.fleet-card p {
+    color: var(--texto-claro);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.storage-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.storage-feature {
+    background: var(--gris-fondo);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-bottom: 4px solid transparent;
+}
+
+.storage-feature:hover {
+    transform: translateY(-5px);
+    border-bottom: 4px solid var(--naranja-acento);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.storage-feature h4 {
+    color: var(--azul-corporativo);
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.storage-feature p {
+    color: var(--texto-claro);
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 .about-content {
@@ -341,10 +564,48 @@ nav {
     min-width: 300px;
 }
 
+.about-text .section-title {
+    text-align: left;
+}
+
+.about-text .section-title .divider {
+    margin: 10px 0;
+}
+
 .about-text p {
     margin-bottom: 20px;
     color: var(--texto-claro);
     font-size: 18px;
+}
+
+.mission-vision-section {
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+.mv-item {
+    margin-bottom: 25px;
+}
+
+.mv-item h3 {
+    color: var(--azul-corporativo);
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.mv-item .mv-divider {
+    height: 3px;
+    width: 40px;
+    background-color: var(--naranja-acento);
+    margin-top: 5px;
+}
+
+.mv-item p {
+    color: var(--texto-claro);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 0;
+    margin-top: 15px;
 }
 
 .about-image {
@@ -637,6 +898,37 @@ nav {
     width: 100%;
 }
 
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #e74c3c;
+}
+
+.form-group input.success,
+.form-group textarea.success {
+    border-color: #27ae60;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.notif-icon {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 /* Footer */
 footer {
     background-color: var(--azul-corporativo);
@@ -646,14 +938,79 @@ footer {
     border-top: 5px solid var(--naranja-acento);
 }
 
-.footer-content h2 {
-    color: var(--naranja-acento);
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
-.footer-content p {
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-logo img {
+    height: 50px;
+    width: auto;
+}
+
+.footer-logo p {
+    color: var(--blanco);
     margin-top: 10px;
     font-size: 14px;
     opacity: 0.8;
+}
+
+.footer-social h4 {
+    color: var(--naranja-acento);
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: var(--blanco);
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.social-icon:hover {
+    background: var(--naranja-acento);
+    border-color: var(--naranja-acento);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.developed-by {
+    color: var(--naranja-acento) !important;
+    font-size: 12px !important;
 }
 
 /* =========================================
@@ -677,3 +1034,55 @@ footer {
 .retraso-1 { transition-delay: 0.1s; }
 .retraso-2 { transition-delay: 0.3s; }
 .retraso-3 { transition-delay: 0.5s; }
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-container {
+        flex-wrap: wrap;
+    }
+    
+    nav {
+        order: 3;
+        width: 100%;
+        margin-right: 0;
+        margin-top: 15px;
+        justify-content: center;
+    }
+    
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 20px 0;
+    }
+    
+    .navbar .btn {
+        margin-left: auto;
+    }
+    
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    .slide-caption-hero h2 {
+        font-size: 32px;
+    }
+    
+    .slide-caption-hero p {
+        font-size: 16px;
+    }
+    
+    .logo-container img {
+        height: 40px;
+    }
+}
