@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 📧 CORREO DE DESTINO - MODIFICAR AQUÍ
         // Reemplazar con el correo real de Mundo Logístico
         // ═══════════════════════════════════════════════════════
-        DESTINATARIO: 'contacto@mundologistico.com',
+        DESTINATARIO: 'somosmundologistico@gmail.com',
         // ═══════════════════════════════════════════════════════
         
         ASUNTO_DEFAULT: 'Nueva solicitud de contacto desde Mundo Logístico',
