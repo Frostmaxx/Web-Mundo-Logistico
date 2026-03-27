@@ -609,8 +609,8 @@ nav {
 }
 
 .about-image {
-    flex: 1;
-    min-width: 300px;
+    flex: 0 0 400px;
+    max-width: 400px;
     background-color: var(--azul-corporativo);
     border-radius: 8px;
     display: flex;
@@ -618,6 +618,14 @@ nav {
     align-items: center;
     min-height: 350px;
     color: var(--blanco);
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .about-image .image-placeholder {
