@@ -3,10 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo Logístico | Soluciones Integrales de Transporte</title>
+    <title>Mundo Logístico | Soluciones Integrales de Transporte y Logística en Venezuela</title>
+    <meta name="description" content="Mundo Logístico ofrece soluciones integrales de transporte, almacenamiento y logística en Venezuela. Flota moderna, almacenamiento en frío y consolidación de carga con cobertura nacional.">
+    <meta name="keywords" content="logística, transporte, almacenamiento, Venezuela, carga, flota, distribución, cadena de suministro, almacenaje frío, consolidación">
+    <meta name="author" content="Mundo Logístico">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mundologistico.com/">
+    <meta property="og:title" content="Mundo Logístico | Soluciones Integrales de Transporte y Logística">
+    <meta property="og:description" content="Soluciones integrales de transporte, almacenamiento y logística en Venezuela. Flota moderna y cobertura nacional.">
+    <meta property="og:image" content="https://www.mundologistico.com/resources/og-image.png">
+    <meta property="og:locale" content="es_VE">
+    <meta property="og:site_name" content="Mundo Logístico">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.mundologistico.com/">
+    <meta name="twitter:title" content="Mundo Logístico | Soluciones Integrales de Transporte y Logística">
+    <meta name="twitter:description" content="Soluciones integrales de transporte, almacenamiento y logística en Venezuela. Flota moderna y cobertura nacional.">
+    <meta name="twitter:image" content="https://www.mundologistico.com/resources/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.mundologistico.com/">
+    
     <link rel="icon" type="image/png" href="resources/fav-orig.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data - Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Mundo Logístico",
+        "description": "Soluciones integrales de transporte, almacenamiento y logística en Venezuela",
+        "url": "https://www.mundologistico.com",
+        "telephone": "+58-424-1549902",
+        "email": "somosmundologistico@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av. Ppal Palo Alto, Urb. Las Margaritas II, Casa C-15",
+            "addressLocality": "Guatire",
+            "addressRegion": "Miranda",
+            "addressCountry": "VE"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "10.4625",
+            "longitude": "-66.6258"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "08:00",
+            "closes": "18:00"
+        },
+        "sameAs": [
+            "https://www.facebook.com/somosmundologistico",
+            "https://www.instagram.com/somosmundologistico",
+            "https://www.tiktok.com/@somosmundologistico"
+        ],
+        "priceRange": "$$",
+        "serviceType": ["Transporte de carga", "Almacenamiento", "Logística", "Cadena de frío"]
+    }
+    </script>
 </head>
 <body>
 
@@ -17,16 +81,32 @@
                     <img src="resources/logo-horiz-orig.png" alt="Mundo Logístico">
                 </a>
             </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html#inicio">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="index.html#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-            <a href="index.html#cotizacion" class="btn btn-primary">Cotiza ya</a>
+            <div class="nav-right">
+                <nav class="desktop-nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html#inicio">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                <a href="index.html#cotizacion" class="btn btn-primary">Cotiza ya</a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul class="nav-links">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a href="index.html#cotizacion" class="btn btn-primary mobile-btn">Cotiza ya</a>
+        </nav>
     </header>
 
     <!-- Carrusel Hero -->
@@ -47,23 +127,23 @@
                     <div class="slide-caption-hero">
                         <h2>Almacenamiento Seguro</h2>
                         <p>Amplios Espacios acondicionados para el resguardo de tu inventario.</p>
-                        <a href="index.html#contacto" class="btn btn-primary">Contáctanos</a>
+                        <a href="servicios.html#almacenamiento-y-consolidacion" class="btn btn-primary">Saber Más</a>
                     </div>
                 </div>
                 <div class="carousel-slide">
                     <img src="resources/vecteezy-fleet-of-trucks-parked-at-industrial-site-at-sunset-glow-55204636.jpeg" alt="Logística y Mantenimiento">
                     <div class="slide-caption-hero">
                         <h2>Flota Moderna y Diversa</h2>
-                        <p>Atención Integral en Ruta: Estacionamiento, alojamiento y mantenimiento.</p>
-                        <a href="servicios.html" class="btn btn-primary">Saber Más</a>
+                        <p>Vehículos adaptados a tus necesidades de transporte.</p>
+                        <a href="servicios.html#flota" class="btn btn-primary">Saber Más</a>
                     </div>
                 </div>
                 <div class="carousel-slide">
-                    <img src="resources/frozen-storage.jpeg" alt="Almacenaje en Frío">
+                    <img src="resources/frozen-storage.jpeg" alt="Almacenaje en Frío" class="cold-filter">
                     <div class="slide-caption-hero">
                         <h2>Almacenaje en Frío</h2>
                         <p>Cámaras Frigoríficas de Alta Tecnología para productos perecederos.</p>
-                        <a href="index.html#contacto" class="btn btn-primary">Cotiza ya</a>
+                        <a href="servicios.html#almacenamiento-frio" class="btn btn-primary">Saber Más</a>
                     </div>
                 </div>
                 <!-- Set 2 (duplicate for infinite scroll) -->
@@ -80,23 +160,23 @@
                     <div class="slide-caption-hero">
                         <h2>Almacenamiento Seguro</h2>
                         <p>Amplios Espacios acondicionados para el resguardo de tu inventario.</p>
-                        <a href="index.html#contacto" class="btn btn-primary">Contáctanos</a>
+                        <a href="servicios.html#almacenamiento-y-consolidacion" class="btn btn-primary">Saber Más</a>
                     </div>
                 </div>
                 <div class="carousel-slide">
                     <img src="resources/vecteezy-fleet-of-trucks-parked-at-industrial-site-at-sunset-glow-55204636.jpeg" alt="Logística y Mantenimiento">
                     <div class="slide-caption-hero">
                         <h2>Flota Moderna y Diversa</h2>
-                        <p>Atención Integral en Ruta: Estacionamiento, alojamiento y mantenimiento.</p>
-                        <a href="servicios.html" class="btn btn-primary">Saber Más</a>
+                        <p>Vehículos adaptados a tus necesidades de transporte.</p>
+                        <a href="servicios.html#flota" class="btn btn-primary">Saber Más</a>
                     </div>
                 </div>
                 <div class="carousel-slide">
-                    <img src="resources/frozen-storage.jpeg" alt="Almacenaje en Frío">
+                    <img src="resources/frozen-storage.jpeg" alt="Almacenaje en Frío" class="cold-filter">
                     <div class="slide-caption-hero">
                         <h2>Almacenaje en Frío</h2>
                         <p>Cámaras Frigoríficas de Alta Tecnología para productos perecederos.</p>
-                        <a href="index.html#contacto" class="btn btn-primary">Cotiza ya</a>
+                        <a href="servicios.html#almacenamiento-frio" class="btn btn-primary">Saber Más</a>
                     </div>
                 </div>
             </div>
@@ -156,12 +236,13 @@
                 <h2>Nuestros Clientes</h2>
                 <div class="divider"></div>
             </div>
-            <div class="clients-grid animar-oculto retraso-1">
-                <div class="client-logo">Brand1</div>
-                <div class="client-logo">LogisticsCorp</div>
-                <div class="client-logo">TransGlobal</div>
-                <div class="client-logo">AgroExpress</div>
-                <div class="client-logo">MegaStore</div>
+            <div class="clients-carousel">
+                <div class="clients-track">
+                    <div class="client-logo"><img src="resources/clientes/PDVSA.png" alt="PDVSA"></div>
+                    <div class="client-logo"><img src="resources/clientes/heinz.png" alt="Heinz"></div>
+                    <div class="client-logo"><img src="resources/clientes/charcuteria_tovar.png" alt="Charcutería Tovar"></div>
+                    <div class="client-logo"><img src="resources/clientes/grupo_bolonia.png" alt="Grupo Bolonia"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -268,7 +349,7 @@
                     </div>
                     <div class="info-item">
                         <h4>📞 Teléfono</h4>
-                        <p>🇻🇪 +58 424-1549902</p>
+                        <p>+58 424-1549902</p>
                     </div>
                     <div class="info-item">
                         <h4>📧 Email</h4>

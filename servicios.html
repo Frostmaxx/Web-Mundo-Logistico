@@ -3,10 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios | Mundo Logístico</title>
+    <title>Servicios de Logística y Transporte | Mundo Logístico Venezuela</title>
+    <meta name="description" content="Descubre nuestros servicios de transporte de carga, almacenamiento seguro, almacenamiento en frío y flota moderna. Soluciones logísticas integrales en Venezuela con cobertura nacional.">
+    <meta name="keywords" content="servicios logísticos, transporte de carga, almacenamiento, flota vehicular, cadena de frío, distribución Venezuela, consolidación de carga">
+    <meta name="author" content="Mundo Logístico">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mundologistico.com/servicios.html">
+    <meta property="og:title" content="Servicios de Logística y Transporte | Mundo Logístico">
+    <meta property="og:description" content="Transporte de carga, almacenamiento seguro y en frío, flota moderna. Soluciones logísticas integrales en Venezuela.">
+    <meta property="og:image" content="https://www.mundologistico.com/resources/og-image.png">
+    <meta property="og:locale" content="es_VE">
+    <meta property="og:site_name" content="Mundo Logístico">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.mundologistico.com/servicios.html">
+    <meta name="twitter:title" content="Servicios de Logística y Transporte | Mundo Logístico">
+    <meta name="twitter:description" content="Transporte de carga, almacenamiento seguro y en frío, flota moderna. Soluciones logísticas en Venezuela.">
+    <meta name="twitter:image" content="https://www.mundologistico.com/resources/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.mundologistico.com/servicios.html">
+    
     <link rel="icon" type="image/png" href="resources/fav-orig.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data - Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Servicios de Logística y Transporte",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Mundo Logístico",
+            "url": "https://www.mundologistico.com",
+            "telephone": "+58-424-1549902",
+            "email": "somosmundologistico@gmail.com"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Venezuela"
+        },
+        "description": "Servicios de transporte de carga, almacenamiento seguro, almacenamiento en frío y flota moderna con cobertura nacional en Venezuela.",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios de Logística",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Transporte de Carga"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Almacenamiento Seguro"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Almacenamiento en Frío"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Flota Moderna"}}
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -17,16 +74,32 @@
                     <img src="resources/logo-horiz-orig.png" alt="Mundo Logístico">
                 </a>
             </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html#inicio">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="index.html#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-            <a href="index.html#cotizacion" class="btn btn-primary">Cotiza ya</a>
+            <div class="nav-right">
+                <nav class="desktop-nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html#inicio">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                <a href="index.html#cotizacion" class="btn btn-primary">Cotiza ya</a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul class="nav-links">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a href="index.html#cotizacion" class="btn btn-primary mobile-btn">Cotiza ya</a>
+        </nav>
     </header>
 
     <section class="services-page">
@@ -102,7 +175,7 @@
             </div>
 
             <div class="service-detail-section">
-                <div class="service-detail-header">
+                <div class="service-detail-header" id="almacenamiento-y-consolidacion">
                     <h3>Almacenamiento y Consolidación de Carga</h3>
                     <div class="service-detail-divider"></div>
                 </div>
@@ -125,31 +198,72 @@
                     </div>
                 </div>
             </div>
+
+            <div class="service-detail-section" id="almacenamiento-frio">
+                <div class="service-detail-header">
+                    <h3>Almacenamiento en Frío</h3>
+                    <div class="service-detail-divider"></div>
+                </div>
+                <div class="service-detail-content">
+                    <p>Mundo Logístico asegura la cadena de frío con servicios de almacenamiento y conservación estratégica. Nuestra infraestructura prolonga la vida útil de los productos, con salas de procesamiento bajo estándares internacionales. Ofrecemos empaque especializado y gestión de residuos para garantizar una operación eficiente y de alta calidad.</p>
+                </div>
+                
+                <div class="storage-features">
+                    <div class="storage-feature">
+                        <h4>Cavas de Recepción a 0°</h4>
+                        <p>Espacios especializados para la recepción de productos manteniendo la temperatura óptima desde el inicio.</p>
+                    </div>
+                    <div class="storage-feature">
+                        <h4>Ultracongelación a -45°</h4>
+                        <p>Tecnología de ultracongelación para preservar la calidad y frescura de productos perecederos.</p>
+                    </div>
+                    <div class="storage-feature">
+                        <h4>Cava de Desechos a -15°</h4>
+                        <p>Gestión segura de residuos con temperaturas controladas para mantener la higiene operativa.</p>
+                    </div>
+                    <div class="storage-feature">
+                        <h4>Masterizado</h4>
+                        <p>Procesos de masterización para el manejo especializado de productos congelados.</p>
+                    </div>
+                    <div class="storage-feature">
+                        <h4>Maquilas</h4>
+                        <p>Servicios de maquila con infraestructura de frío para procesamiento y transformación de productos.</p>
+                    </div>
+                    <div class="storage-feature">
+                        <h4>Amplios Andenes de Carga</h4>
+                        <p>Espacios amplios y equipados para la carga y descarga eficiente de mercancía refrigerada.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="contacto" class="contact">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title animar-oculto">
                 <h2>Contáctanos</h2>
                 <div class="divider"></div>
             </div>
             <div class="contact-grid">
-                <div class="contact-info">
+                <div class="contact-info animar-oculto retraso-1">
                     <div class="info-item">
                         <h4>📍 Ubicación</h4>
-                        <p>Av. Principal, Edificio Logístico, Ciudad</p>
+                        <p>Av. Ppal Palo Alto, Urb. Las Margaritas II, Casa C-15, Guatire, Miranda</p>
                     </div>
                     <div class="info-item">
                         <h4>📞 Teléfono</h4>
-                        <p>🇻🇪 +58 412-9356427</p>
+                        <p>+58 424-1549902</p>
                     </div>
                     <div class="info-item">
                         <h4>📧 Email</h4>
                         <p>somosmundologistico@gmail.com</p>
                     </div>
+                    <div class="info-item">
+                        <h4>🌐 Sitio Web</h4>
+                        <p>www.mundologistico.com</p>
+                    </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form animar-oculto retraso-2">
                     <form id="contact-form" action="" method="POST">
                         <div class="form-group">
                             <input type="text" name="nombre" placeholder="Tu Nombre o Empresa" required>
@@ -167,7 +281,7 @@
         </div>
     </section>
 
-    <footer>
+    <footer class="animar-oculto">
         <div class="container footer-content">
             <div class="footer-main">
                 <div class="footer-logo">

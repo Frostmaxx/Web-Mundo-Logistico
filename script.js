@@ -15,12 +15,61 @@ document.addEventListener('DOMContentLoaded', () => {
         // ═══════════════════════════════════════════════════════
         
         ASUNTO_DEFAULT: 'Nueva solicitud de contacto desde Mundo Logístico',
-        METODO_ENVIO: 'api', // 'api' | 'mailto' | 'console' (para pruebas)
+        METODO_ENVIO: 'mailto', // 'api' | 'mailto' | 'console' (para pruebas)
         
         // Configuración de API (si se usa METODO_ENVIO: 'api')
         // Reemplazar con la URL del backend/API de envío
         API_ENDPOINT: 'https://api.mundologistico.com/enviar-correo'
     };
+    // =====================================================
+    
+    // =====================================================
+    // 🍔 MENÚ HAMBURGUESA MÓVIL
+    // =====================================================
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    if (hamburger && mobileNav) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            
+            // Crear overlay si no existe
+            let overlay = document.querySelector('.nav-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'nav-overlay';
+                document.body.appendChild(overlay);
+            }
+            overlay.classList.toggle('active');
+            
+            // Prevenir scroll del body
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Cerrar menú al hacer clic en overlay
+        const overlay = document.querySelector('.nav-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Cerrar menú al hacer clic en un enlace
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                const overlay = document.querySelector('.nav-overlay');
+                if (overlay) overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
     // =====================================================
     
     const elementosParaAnimar = document.querySelectorAll('.animar-oculto');
@@ -412,4 +461,84 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         carouselContainer.setAttribute('tabindex', '0');
     }
+    
+    // =====================================================
+    // 🏢 CARRUSEL DE CLIENTES (INFINITE SCROLL)
+    // =====================================================
+    const clientsTrack = document.querySelector('.clients-track');
+    if (clientsTrack) {
+        let pos = 0;
+        let trackWidth = 0;
+        let isMobile = window.innerWidth <= 768;
+        
+        function setupCarousel() {
+            isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                const currentLogos = clientsTrack.querySelectorAll('.client-logo');
+                if (currentLogos.length <= 4) {
+                    const clientLogos = clientsTrack.innerHTML;
+                    clientsTrack.innerHTML = clientLogos + clientLogos;
+                }
+            } else {
+                const logos = clientsTrack.querySelectorAll('.client-logo');
+                if (logos.length > 4) {
+                    const firstFour = Array.from(logos).slice(0, 4).map(l => l.outerHTML).join('');
+                    clientsTrack.innerHTML = firstFour;
+                }
+                clientsTrack.style.transform = 'translateX(0)';
+                pos = 0;
+            }
+        }
+        
+        let animationId = null;
+        
+        function updateTrackWidth() {
+            const logos = clientsTrack.querySelectorAll('.client-logo');
+            trackWidth = 0;
+            logos.forEach(logo => {
+                trackWidth += logo.offsetWidth + 30;
+            });
+            trackWidth = trackWidth / 2;
+        }
+        
+        function animateLogos() {
+            if (!isMobile) {
+                animationId = null;
+                return;
+            }
+            
+            updateTrackWidth();
+            pos -= 0.4;
+            if (pos <= -trackWidth) {
+                pos = 0;
+            }
+            clientsTrack.style.transform = `translateX(${pos}px)`;
+            animationId = requestAnimationFrame(animateLogos);
+        }
+        
+        function startAnimation() {
+            isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                updateTrackWidth();
+                if (!animationId) {
+                    animateLogos();
+                }
+            } else {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+            }
+        }
+        
+        setupCarousel();
+        startAnimation();
+        window.addEventListener('resize', () => {
+            setupCarousel();
+            pos = 0;
+            startAnimation();
+        });
+    }
+    // =====================================================
 });

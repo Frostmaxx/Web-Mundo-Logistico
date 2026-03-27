@@ -93,20 +93,26 @@ a {
     width: auto;
 }
 
-nav {
-    flex-grow: 1;
+.nav-right {
     display: flex;
-    justify-content: flex-end;
-    margin-right: 20px;
+    align-items: center;
+    gap: 20px;
 }
 
-.nav-links {
+.desktop-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.desktop-nav .nav-links {
     list-style: none;
     display: flex;
     gap: 30px;
+    margin: 0;
+    padding: 0;
 }
 
-.nav-links a {
+.desktop-nav .nav-links a {
     color: var(--azul-corporativo);
     font-weight: 600;
     font-size: 15px;
@@ -132,6 +138,65 @@ nav {
 .navbar .btn:hover {
     background: var(--naranja-acento-hover);
     transform: translateY(-2px);
+}
+
+/* Menú Hamburguesa */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--azul-corporativo);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.desktop-nav {
+    display: block;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+/* Overlay para cerrar el menú */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+.nav-overlay.active {
+    display: block;
 }
 
 /* Sección Hero Carrusel */
@@ -177,6 +242,10 @@ nav {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.carousel-slide {
+    position: relative;
 }
 
 .slide-caption-hero {
@@ -349,7 +418,7 @@ nav {
 }
 
 .service-almacen::before {
-    background-image: url('../resources/depositphotos-35148913-stock-photo-warehouse-interior.jpg');
+    background-image: url('../resources/almacenamiento.jpeg');
 }
 
 .service-transportista::before {
@@ -406,9 +475,18 @@ nav {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
+#flota {
+    scroll-margin-top: 120px;
+}
+
+#almacenamiento-frio {
+    scroll-margin-top: 120px;
+}
+
 .service-detail-header {
     text-align: center;
     margin-bottom: 30px;
+    scroll-margin-top: 150px;
 }
 
 .service-detail-header h3 {
@@ -669,28 +747,69 @@ nav {
     padding: 60px 0;
     background-color: var(--gris-fondo);
     text-align: center;
+    overflow: hidden;
 }
 
 .clients .section-title {
     margin-bottom: 30px;
 }
 
-.clients-grid {
+.clients-carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.clients-track {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 40px;
+    width: 100%;
+    padding: 0 20px;
 }
 
 .client-logo {
-    font-size: 24px;
-    color: #999;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
     filter: grayscale(100%);
     opacity: 0.6;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.client-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.client-logo img {
+    max-width: 150px;
+    max-height: 80px;
+    object-fit: contain;
+    width: auto;
+    height: 60px;
+}
+
+/* Filtro azul para imágenes de almacenamiento en frío */
+.cold-filter {
+    position: relative;
+}
+
+.cold-filter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 100, 200, 0.3);
+    pointer-events: none;
+    z-index: 1;
 }
 
 /* Sección Testimonios (Carrusel 3 Cartas) */
@@ -927,9 +1046,30 @@ nav {
     }
 }
 
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .notif-icon {
@@ -1052,41 +1192,97 @@ footer {
 
 /* Responsive Navbar */
 @media (max-width: 768px) {
-    .nav-links {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-right {
         display: none;
     }
     
     .nav-container {
-        flex-wrap: wrap;
+        position: relative;
     }
     
-    nav {
-        order: 3;
-        width: 100%;
-        margin-right: 0;
-        margin-top: 15px;
-        justify-content: center;
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 100vh;
+        background-color: rgba(248, 249, 250, 0.65);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 80px 30px 30px;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.4s;
+        z-index: 999;
+        box-shadow: -4px 0 25px rgba(0,0,0,0.15);
+        justify-content: flex-start;
+        align-items: center;
+        transform: translateX(100%);
+        visibility: hidden;
     }
     
-    .nav-links.active {
+    .mobile-nav.active {
+        transform: translateX(0);
+        visibility: visible;
+    }
+    
+    .mobile-nav .nav-links {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 25px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
         text-align: center;
-        padding: 20px 0;
     }
     
-    .navbar .btn {
-        margin-left: auto;
+    .mobile-nav .nav-links li {
+        animation: slideInRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
     }
     
-    .menu-toggle {
+    .mobile-nav .nav-links li:nth-child(1) { animation-delay: 0.15s; }
+    .mobile-nav .nav-links li:nth-child(2) { animation-delay: 0.2s; }
+    .mobile-nav .nav-links li:nth-child(3) { animation-delay: 0.25s; }
+    .mobile-nav .nav-links li:nth-child(4) { animation-delay: 0.3s; }
+    
+    .mobile-nav .nav-links a {
+        color: var(--azul-corporativo);
+        font-weight: 600;
+        font-size: 18px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .mobile-nav .nav-links a:hover {
+        color: var(--naranja-acento);
+    }
+    
+    .mobile-btn {
+        margin-top: 30px;
+        text-align: center;
         display: block;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
+        animation: slideInRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s backwards;
+    }
+    
+    .hamburger {
+        margin-left: auto;
+        transition: transform 0.3s ease;
+    }
+    
+    .hamburger.active {
+        animation: spin 0.3s ease;
+    }
+    
+    .nav-overlay {
+        transition: opacity 0.4s ease;
+    }
+    
+    .nav-overlay.active {
+        animation: fadeIn 0.3s ease;
     }
     
     .slide-caption-hero h2 {
@@ -1099,5 +1295,29 @@ footer {
     
     .logo-container img {
         height: 40px;
+    }
+    
+    .hero-carousel {
+        height: calc(100vh - 80px);
+    }
+    
+    /* Carrusel de Clientes Mobile */
+    .clients-carousel {
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .clients-track {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        width: max-content;
+    }
+    
+    .clients-track:hover {
+        animation-play-state: paused;
     }
 }

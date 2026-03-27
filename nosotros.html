@@ -3,10 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiénes Somos | Mundo Logístico</title>
+    <title>Quiénes Somos | Mundo Logístico - Empresa de Logística en Venezuela</title>
+    <meta name="description" content="Conoce a Mundo Logístico, empresa líder en soluciones de transporte y logística en Venezuela. Misión, visión y equipo comprometido con la excelencia operativa.">
+    <meta name="keywords" content="quiénes somos, empresa de logística, transporte Venezuela, sobre nosotros, misión logística, visión empresarial">
+    <meta name="author" content="Mundo Logístico">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mundologistico.com/nosotros.html">
+    <meta property="og:title" content="Quiénes Somos | Mundo Logístico - Empresa de Logística">
+    <meta property="og:description" content="Conoce a Mundo Logístico, líder en soluciones de transporte y logística en Venezuela. Comprometidos con la excelencia operativa.">
+    <meta property="og:image" content="https://www.mundologistico.com/resources/og-image.png">
+    <meta property="og:locale" content="es_VE">
+    <meta property="og:site_name" content="Mundo Logístico">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.mundologistico.com/nosotros.html">
+    <meta name="twitter:title" content="Quiénes Somos | Mundo Logístico - Empresa de Logística">
+    <meta name="twitter:description" content="Conoce a Mundo Logístico, líder en soluciones de transporte y logística en Venezuela.">
+    <meta name="twitter:image" content="https://www.mundologistico.com/resources/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.mundologistico.com/nosotros.html">
+    
     <link rel="icon" type="image/png" href="resources/fav-orig.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data - Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "mainEntity": {
+            "@type": "LocalBusiness",
+            "name": "Mundo Logístico",
+            "description": "Empresa líder en soluciones de transporte y logística en Venezuela",
+            "url": "https://www.mundologistico.com",
+            "telephone": "+58-424-1549902",
+            "email": "somosmundologistico@gmail.com",
+            "foundingDate": "2020",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Av. Ppal Palo Alto, Urb. Las Margaritas II, Casa C-15",
+                "addressLocality": "Guatire",
+                "addressRegion": "Miranda",
+                "addressCountry": "VE"
+            },
+            "mission": "Proveer soluciones logísticas integrales de almacenamiento, distribución y consolidación de carga a nivel nacional, garantizando eficiencia, seguridad y excelencia operativa.",
+            "vision": "Liderar la transformación del sector, estableciendo los más altos estándares de servicio hasta consolidarnos como el modelo definitivo de éxito, innovación y rentabilidad en el país."
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -17,16 +69,32 @@
                     <img src="resources/logo-horiz-orig.png" alt="Mundo Logístico">
                 </a>
             </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html#inicio">Inicio</a></li>
-                    <li><a href="index.html#servicios">Servicios</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="index.html#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-            <a href="index.html#cotizacion" class="btn btn-primary">Cotiza ya</a>
+            <div class="nav-right">
+                <nav class="desktop-nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html#inicio">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                <a href="index.html#cotizacion" class="btn btn-primary">Cotiza ya</a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul class="nav-links">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a href="index.html#cotizacion" class="btn btn-primary mobile-btn">Cotiza ya</a>
+        </nav>
     </header>
 
     <section class="about-page">
@@ -61,26 +129,30 @@
 
     <section id="contacto" class="contact">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title animar-oculto">
                 <h2>Contáctanos</h2>
                 <div class="divider"></div>
             </div>
             <div class="contact-grid">
-                <div class="contact-info">
+                <div class="contact-info animar-oculto retraso-1">
                     <div class="info-item">
                         <h4>📍 Ubicación</h4>
-                        <p>Av. Principal, Edificio Logístico, Ciudad</p>
+                        <p>Av. Ppal Palo Alto, Urb. Las Margaritas II, Casa C-15, Guatire, Miranda</p>
                     </div>
                     <div class="info-item">
                         <h4>📞 Teléfono</h4>
-                        <p>🇻🇪 +58 412-9356427</p>
+                        <p>+58 424-1549902</p>
                     </div>
                     <div class="info-item">
                         <h4>📧 Email</h4>
                         <p>somosmundologistico@gmail.com</p>
                     </div>
+                    <div class="info-item">
+                        <h4>🌐 Sitio Web</h4>
+                        <p>www.mundologistico.com</p>
+                    </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form animar-oculto retraso-2">
                     <form id="contact-form" action="" method="POST">
                         <div class="form-group">
                             <input type="text" name="nombre" placeholder="Tu Nombre o Empresa" required>
@@ -98,7 +170,7 @@
         </div>
     </section>
 
-    <footer>
+    <footer class="animar-oculto">
         <div class="container footer-content">
             <div class="footer-main">
                 <div class="footer-logo">
