@@ -1,0 +1,43 @@
+# Mundo Logístico - robots.txt
+# Optimizado para SEO
+
+User-agent: *
+Allow: /
+
+# Archivos permitidos
+Sitemap: https://www.mundo-logistico.com/sitemap.xml
+
+# Bloquear acceso a carpetas innecesarias
+Disallow: /css/
+Disallow: /js/
+Disallow: /resources/
+Disallow: /*.css$
+Disallow: /*.js$
+
+# Permitir recursos necesarios
+Allow: /resources/*.png
+Allow: /resources/*.jpg
+Allow: /resources/*.jpeg
+Allow: /resources/*.svg
+Allow: /resources/*.gif
+
+# Archivos principales
+Allow: /index.html
+Allow: /servicios.html
+Allow: /nosotros.html
+
+# Configuración de Crawl-delay
+Crawl-delay: 1
+
+# Reglas específicas para bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
